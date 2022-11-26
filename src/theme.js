@@ -5,7 +5,6 @@ import {
 export default function myTheme(){
 
     return createTheme({
-        createTheme({
         palette: {
             themePrimary: '#cc00ff',
             themeLighterAlt: '#08000a',
