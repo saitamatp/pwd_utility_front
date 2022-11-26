@@ -1,0 +1,12 @@
+#Content {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    border-width: 1px;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.Anchor{
+    color: azure;
+}
