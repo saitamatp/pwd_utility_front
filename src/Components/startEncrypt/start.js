@@ -57,7 +57,7 @@ export default function StartPath(){
             <div id="ChildItems">
             <input type="password" id="password" placeholder="Enter Master Password"></input>
             <input type="text" id="account" placeholder="Enter Account Password"></input>
-            <input type="password" id="pwd" placeholder="Enter Password Password"></input>
+            <input type="password" id="pwd" placeholder="Enter Account Password"></input>
             
             <PrimaryButton onClick={RPS} id="Submit-button" text="Submit" disabled={sbutton} />
             <PrimaryButton onClick={downloadFile} id="Download-button" text="Download Contents" disabled={button} />

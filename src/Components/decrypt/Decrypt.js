@@ -4,6 +4,8 @@ import PreviewFile from "../../Function/previewFile";
 import PostData from "../../Function/postData";
 import './Decrypt.css';
 import { PrimaryButton } from '@fluentui/react/lib/Button';
+import { FontSizes } from '@fluentui/theme';
+
 
 export default function Decrypt(){
     const [DataElements, setDataElements] = React.useState([]);
@@ -45,11 +47,16 @@ export default function Decrypt(){
 
     return(
         <div id="Content">
+            <div style={{ fontSize: FontSizes.size50 }}>
+                <h1>View your Passwords </h1>
+            </div>
             <div id="ChildItems">
+                <div style={{ fontSize: FontSizes.size20 }}>
             <input type="password" id="password" placeholder="Enter Master Password"></input>
-                <input type="file" id="file" accept="application/JSON"></input>
+                    <input type="file" id="file" accept="application/JSON"></input>
                 <PrimaryButton onClick={RPS} className="Submit-button" text="Submit" />
             {Display}
+            </div>
             </div>
         </div>
     )
