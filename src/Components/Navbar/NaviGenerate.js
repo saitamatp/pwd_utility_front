@@ -6,14 +6,10 @@ const navigationStyles = {
         height: '100vh',
         boxSizing: 'border-box',
         overflowY: 'auto',
-        position: 'absolute',
-
+        //position: 'absolute',
+        //backgroundColor: '#404040',
+        position: 'fixed',
     },
-    // these link styles override the default truncation behavior
-    /*link: {
-        whiteSpace: 'normal',
-        lineHeight: 'inherit',
-    },*/
 };
 
 const links = [
