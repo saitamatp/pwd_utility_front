@@ -2,9 +2,7 @@ import React from "react";
 import "./Guide.css"
 import { FontSizes } from '@fluentui/theme';
 import { Icon } from '@fluentui/react/lib/Icon';
-//QuickNote--Fresh Start
-//Lock12--Encrypt
-//Fingerprint--decrypt
+
 export default function Guide(){
     return(
         <div id="Content">
@@ -21,7 +19,7 @@ export default function Guide(){
            <ol>
                 <li>Start by clicking on <a id="Anchor" href="/new">“Fresh Start”</a> on the Nav bar.</li>
                 <li >Create a Master password which suits yourself,  of 32 characters .</li>
-                <li>Once you have added your Password yoou can download the encrypted file with your password</li>
+                <li>Once you have added your Password you can download the encrypted file with your password.</li>
            </ol>
            </div>
 
