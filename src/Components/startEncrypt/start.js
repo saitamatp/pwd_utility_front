@@ -65,6 +65,8 @@ export default function StartPath(){
         }
     };
 
+
+
     return(
         <div id="Content_Start">
              <div style={{ fontSize: FontSizes.size50 }}>
@@ -81,6 +83,7 @@ export default function StartPath(){
                         revealPasswordAriaLabel="Show password"
                         id="password" placeholder="Password"
                         styles={getStyles}
+                        description='Please create a password of exactly 32 characters long'
                     />
                 </Stack.Item>
                 <Stack.Item>
