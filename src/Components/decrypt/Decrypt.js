@@ -5,32 +5,29 @@ import PostData from "../../Function/postData";
 import './Decrypt.css';
 import { PrimaryButton } from '@fluentui/react/lib/Button';
 import { FontSizes } from '@fluentui/theme';
-
+import { TextField } from '@fluentui/react/lib/TextField';
+import { Stack } from '@fluentui/react/lib/Stack';
+import { Icon } from '@fluentui/react/lib/Icon';
 
 export default function Decrypt(){
     const [DataElements, setDataElements] = React.useState([]);
-
+    const containerStackTokens = { childrenGap: 5 };
     async function RPS(){
-   
-        //Read Post and set Data
-        var password = document.getElementById("password").value; //Read password
+        
+        var password = document.getElementById("password").value; 
         const a = await PreviewFile();
-        //Check if file is empty
         if (a === "#TP@#") {
             console.log("Empty file");
         }
         else if (password.length === 0 || password.length<32) {
-            //Check if password is alright
-            alert("Enter Valid Password accroding to password requirement");
+            alert("Enter Valid Password according to password requirement");
         }else {
             const content = JSON.stringify({ "Password": password, "values": a });
-            //console.log(content);
             const res=await PostData(content, "decrypt");
             if (res ==="#TP#"){
                 console.log("Error while posting");
             }else{
                 updateState(res);
-                //setDataElements(value);
             }
         }
 
@@ -45,18 +42,47 @@ export default function Decrypt(){
         <RenderDecrypt acc={item.acc} pwd={item.pwd} key={item.acc} />
     ));
 
+    const getStyles = () => {
+        return {
+            root: {
+                maxWidth: '280px'
+            }
+        }
+    };
     return(
-        <div id="Content">
+        <div id="Content_Decrypt">
+           
             <div style={{ fontSize: FontSizes.size50 }}>
-                <h1>View your Passwords </h1>
+                <h1>View your Passwords <Icon iconName="Fingerprint" /> </h1>
             </div>
-            <div id="ChildItems">
+            <div id="ChildItems_Decrypt">
+               
                 <div style={{ fontSize: FontSizes.size20 }}>
-            <input type="password" id="password" placeholder="Enter Master Password"></input>
-                    <input type="file" id="file" accept="application/JSON"></input>
+                    <Stack tokens={containerStackTokens}>
+                        <Stack.Item>
+                    <TextField
+                        label="Enter Master Password"
+                        type="password"
+                        canRevealPassword
+                        revealPasswordAriaLabel="Show password"
+                        id="password" placeholder="Password"
+                        styles={getStyles}
+                    />
+                 </Stack.Item>
+
+                <Stack.Item>
+                <input type="file" id="file" accept="application/JSON"></input> <br></br>
+               </Stack.Item>
+               
+                <Stack.Item>
                 <PrimaryButton onClick={RPS} className="Submit-button" text="Submit" />
-            {Display}
-            </div>
+                </Stack.Item>
+                 <Stack.Item>
+                {Display}
+                 </Stack.Item>
+                </Stack>
+                </div>
+                
             </div>
         </div>
     )

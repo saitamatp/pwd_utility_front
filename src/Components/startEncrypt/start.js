@@ -4,12 +4,17 @@ import RenderDecrypt from "../encrypt/RenderEncypt";
 import DownloadFile from "../../Function/downloadFile";
 import { PrimaryButton } from '@fluentui/react/lib/Button';
 import "./start.css";
+import { FontSizes } from '@fluentui/theme';
+import { TextField } from '@fluentui/react/lib/TextField';
+import { Stack } from '@fluentui/react/lib/Stack';
+import { Icon } from '@fluentui/react/lib/Icon';
 
  //Need to Add lock functionality for button
 export default function StartPath(){
     const [DataElements, setDataElements] = React.useState([]);
     const [button, setButton] = React.useState(true);
     const [sbutton, setsButton] = React.useState(false);
+    const containerStackTokens = { childrenGap: 10 };
 
     let Display = DataElements.map(item => (
         <RenderDecrypt acc={item.Acc} pwd={item.Data} key={item.Acc} />
@@ -52,18 +57,63 @@ export default function StartPath(){
         DownloadFile(DataElements);
     };
 
-    return(
-        <div id="Content">
-            <div id="ChildItems">
-            <input type="password" id="password" placeholder="Enter Master Password"></input>
-            <input type="text" id="account" placeholder="Enter Account Password"></input>
-            <input type="password" id="pwd" placeholder="Enter Account Password"></input>
-            
-            <PrimaryButton onClick={RPS} id="Submit-button" text="Submit" disabled={sbutton} />
-            <PrimaryButton onClick={downloadFile} id="Download-button" text="Download Contents" disabled={button} />
+     const getStyles = () => {
+        return {
+            root: {
+                maxWidth: '280px'
+            }
+        }
+    };
 
-            {Display}
-        </div>
+    return(
+        <div id="Content_Start">
+             <div style={{ fontSize: FontSizes.size50 }}>
+                <h1>Start Encrypting your Passwords   <Icon iconName="QuickNote" /></h1>
+            </div>
+
+            <div id="ChildItems_Start">
+            <Stack tokens={containerStackTokens}>
+                <Stack.Item>
+                <TextField
+                        label="Enter Master Password"
+                        type="password"
+                        canRevealPassword
+                        revealPasswordAriaLabel="Show password"
+                        id="password" placeholder="Password"
+                        styles={getStyles}
+                    />
+                </Stack.Item>
+                <Stack.Item>
+                <TextField
+                        label="Enter Account Name"
+                        canRevealPassword
+                        id="account" placeholder="Account/User Name"
+                        styles={getStyles}
+                    />
+                </Stack.Item>
+                <Stack.Item>
+                 <TextField
+                        label="Enter Account Password"
+                        type="password"
+                        canRevealPassword
+                        revealPasswordAriaLabel="Show password"
+                        id="pwd" placeholder="Account/User Name Password"
+                        styles={getStyles}
+                    />
+                </Stack.Item>
+                <br></br>
+                <Stack.Item>
+                <PrimaryButton onClick={RPS} id="Submit-button" text="Submit" disabled={sbutton} />
+                </Stack.Item>
+                <br></br>
+                <Stack.Item>
+                <PrimaryButton onClick={downloadFile} id="Download-button" text="Download Contents" disabled={button} />
+                </Stack.Item>
+                <Stack.Item>
+                {Display}
+                </Stack.Item>
+                </Stack>
+            </div>
         </div>
     )
 }

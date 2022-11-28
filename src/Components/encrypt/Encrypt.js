@@ -5,12 +5,17 @@ import PostData from "../../Function/postData";
 import DownloadFile from "../../Function/downloadFile";
 import './Encrypt.css';
 import { PrimaryButton } from '@fluentui/react/lib/Button';
+import { FontSizes } from '@fluentui/theme';
+import { TextField } from '@fluentui/react/lib/TextField';
+import { Stack } from '@fluentui/react/lib/Stack';
+import { Icon } from '@fluentui/react/lib/Icon';
 
  //Need to Add clear functionality(UserName and Password)
 export default function Encypt(){
     const [DataElements, setDataElements] = React.useState([]);
     const [button, setButton] = React.useState(true);
     const [sbutton, setsButton] = React.useState(false);
+    const containerStackTokens = { childrenGap: 10 };
 
     let Display = DataElements.map(item => (
         <RenderEncypt acc={item.Acc} pwd={item.Data} key={item.Acc} />
@@ -97,17 +102,69 @@ export default function Encypt(){
             setButton(false);
         }
     }
+    const getStyles = () => {
+        return {
+            root: {
+                maxWidth: '280px'
+            }
+        }
+    };
 
     return(    
-        <div id="Content">
-            <div id="ChildItems">
-            <input type="password" id="password" placeholder="Enter Master Password"></input>
-                <input type="text" id="account" placeholder="Enter Account Password"></input>
-                <input type="password" id="pwd" placeholder="Enter Password Password"></input>
-            <input type="file" id="file" accept=".json"></input>
-            <PrimaryButton onClick={RPS} id="Submit-button" text="Submit" disabled={sbutton} />
-            <PrimaryButton onClick={downloadFile} id="Download-button" text="Download Contents" disabled={button} />
-            {Display}
+        <div id="Content_Encrypt">
+            
+            <div style={{ fontSize: FontSizes.size50 }}>
+                <h1>Add Passwords to existing File <Icon iconName="Lock12" /></h1>
+            </div>
+
+            <div id="ChildItems_Encrypt">
+                 <Stack tokens={containerStackTokens}>
+                <div style={{ fontSize: FontSizes.size20 }}>
+            <Stack.Item>
+                <TextField
+                        label="Enter Master Password"
+                        type="password"
+                        canRevealPassword
+                        revealPasswordAriaLabel="Show password"
+                        id="password" placeholder="Password"
+                        styles={getStyles}
+                    />
+                </Stack.Item>
+                <Stack.Item>
+                <TextField
+                        label="Enter Account Name"
+                        canRevealPassword
+                        id="account" placeholder="Account/User Name"
+                        styles={getStyles}
+                    />
+                </Stack.Item>
+                <Stack.Item>
+                <TextField
+                        label="Enter Account Password"
+                        type="password"
+                        canRevealPassword
+                        revealPasswordAriaLabel="Show password"
+                        id="pwd" placeholder="Account/User Name Password"
+                        styles={getStyles}
+                    />
+                </Stack.Item>
+                <Stack.Item>
+                <br></br>
+                <input type="file" id="file" accept=".json"></input>
+                </Stack.Item>
+                <br></br>
+                <Stack.Item>
+                <PrimaryButton onClick={RPS} id="Submit-button" text="Submit" disabled={sbutton} />
+                </Stack.Item>
+                <br></br>
+                <Stack.Item>
+                <PrimaryButton onClick={downloadFile} id="Download-button" text="Download Contents" disabled={button} />
+                </Stack.Item>
+                <Stack.Item>
+                {Display}
+                </Stack.Item>
+                </div>
+                </Stack>
             </div>
         </div>
     )

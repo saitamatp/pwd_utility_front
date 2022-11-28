@@ -5,7 +5,7 @@ import { Icon } from '@fluentui/react/lib/Icon';
 
 export default function HomePage(){
     return(
-        <div id="Content">
+        <div id="Content_Home">
             <div style={{ fontSize: FontSizes.size50 }}>
                 <h2>Welcome! and Greetings Internet Traveller &nbsp; <Icon iconName="TrainSolid" /></h2>
             </div>

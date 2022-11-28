@@ -5,7 +5,7 @@ import { Icon } from '@fluentui/react/lib/Icon';
 
 export default function Guide(){
     return(
-        <div id="Content">
+        <div id="Content_Guide">
 
             <div style={{ fontSize: FontSizes.size50 }}>
                 <h1>Guide  &nbsp;  <Icon iconName="BookAnswers" /></h1>

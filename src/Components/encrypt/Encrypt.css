@@ -1,18 +1,13 @@
-#Content {
+#Content_Encrypt {
     margin: auto;
     width: 50%;
-    padding: 10px;
+    padding: 1px;
     border-width: 1px;
     justify-content: center;
     min-height: 100vh;
 }
 
-#ChildItems {
-    margin: auto;
-    display: grid;
-    text-align: center;
-    padding: 30px;
-    gap: 30px;
-    margin-left: 10px;
+#ChildItems_Encrypt {
+    padding: auto;
 
 }
