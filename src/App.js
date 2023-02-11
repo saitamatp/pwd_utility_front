@@ -29,7 +29,7 @@ function App() {
       </Routes>
       </BrowserRouter>
       </div>
-      <p id="NotReady">This site is still under development, we will remove this sign once the site is ready ready.</p>
+      <p id="NotReady">This site is still under development, we will remove this sign once the site is ready.</p>
    </div>
   );
 }

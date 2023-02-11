@@ -3,7 +3,7 @@ import Error_message from "./Error";
 
 export default async function postData(val,path){
 
-    let string = "";
+    let string = "http://localhost:8080/";
     let url=string+path;
     //console.log(url);
     const Data = await new Promise((resolve,reject)=>{

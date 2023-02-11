@@ -2,7 +2,8 @@ import React from "react";
 import PostData from "../../Function/postData";
 import RenderDecrypt from "../encrypt/RenderEncypt";
 import DownloadFile from "../../Function/downloadFile";
-import { PrimaryButton } from '@fluentui/react/lib/Button';
+import { ActionButton, PrimaryButton } from '@fluentui/react/lib/Button';
+import randomString from "../../Function/randomPwd";
 import "./start.css";
 import { FontSizes } from '@fluentui/theme';
 import { TextField } from '@fluentui/react/lib/TextField';
@@ -65,15 +66,21 @@ export default function StartPath(){
         }
     };
 
-
+    function CopyAndFill(){
+        let a=randomString(32);
+        navigator.clipboard.writeText(a);
+        document.getElementById("password").value=a;
+        alert("Password copied to Clipboard");
+    }
 
     return(
         <div id="Content_Start">
              <div style={{ fontSize: FontSizes.size50 }}>
                 <h1>Start Encrypting your Passwords   <Icon iconName="QuickNote" /></h1>
             </div>
+            
 
-            <div id="ChildItems_Start">
+            <div id="ChildItems_Start"> 
             <Stack tokens={containerStackTokens}>
                 <Stack.Item>
                 <TextField
@@ -86,6 +93,13 @@ export default function StartPath(){
                         description='Please create a password of exactly 32 characters long'
                     />
                 </Stack.Item>
+
+                <Stack.Item>
+                    <ActionButton onClick={CopyAndFill}>
+                    Auto Generate Master Password
+                    </ActionButton>
+                </Stack.Item>
+                
                 <Stack.Item>
                 <TextField
                         label="Enter Account Name"
@@ -119,4 +133,5 @@ export default function StartPath(){
             </div>
         </div>
     )
+    
 }
