@@ -67,7 +67,7 @@ export default function StartPath(){
     };
 
     function CopyAndFill(){
-        let a=randomString(32);
+        let a=randomString(32).trim.toString();
         navigator.clipboard.writeText(a);
         document.getElementById("password").value=a;
         alert("Password copied to Clipboard");
